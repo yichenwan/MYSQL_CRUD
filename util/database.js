@@ -1,5 +1,6 @@
 var mysql = require('mysql2');
 
+// local enviroment
 var pool = mysql.createPool({
     connectionLimit: 5,
     host: 'localhost',
@@ -7,6 +8,13 @@ var pool = mysql.createPool({
     password: 'mysql', 
     database: 'carrie'
 });
+
+// var pool = mysql.createPool({
+//   host     : 'us-cdbr-iron-east-02.cleardb.net',
+//   user     : 'b6673daff53673',
+//   password : '9dd755f9',
+//   database : 'heroku_a01b7153a162f5d'
+// });
 
 // var query = function(sql, options, callback) {
 //     console.log(sql, options, callback);

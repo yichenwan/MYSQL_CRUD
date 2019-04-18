@@ -13,14 +13,21 @@ app.engine('ejs',engine);
 app.set('views','./views');
 app.set('view engine','ejs');
 
-// var data = {};
+db.execute("show tables like 'MyGuests'").then(([results]) => {
+	if (results.length === 0) {
+	  return db.execute(`CREATE TABLE MyGuests (
+						\guest_id INT PRIMARY KEY AUTO_INCREMENT,
+					    firstname VARCHAR(40),
+					    lastname VARCHAR(40),
+					    email VARCHAR(40))`);		
 
-// query('select * from MyGuests', function(err, rows, fields) {
-//   if (err) throw err;
-//   data.user = rows[1];
-//   console.log(data.user);
-//   console.log('connecting to the database');
-// });
+	}	
+}).then(() => {
+	console.log('new table is created!')
+})
+.catch(err => {
+	throw err;
+});	
 
 app.get('/', function(req, res){
 	db.execute('select * from MyGuests').then(([rows, fieldData]) => {
