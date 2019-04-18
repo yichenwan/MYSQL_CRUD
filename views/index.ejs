@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User List</title>
+</head>
+<body>
+  <h1>Home page</h1>
+
+  <h2>Add User</h2>
+  <form action="/" method="POST">
+  	<label for="firstname">firstname</label>
+  	<input type="text" name="firstname">
+  	<label for="lastname">lastname</label>
+  	<input type="text" name="lastname">
+  	<label for="email">email</label>
+  	<input type="text" name="email">
+  	<input type="submit" value="Submit">
+  </form>
+
+  <hr>
+  <table border="1" width = "600">
+    <th>firstname</th>
+    <th>lastname</th>
+    <th>email</th>
+	<% data.forEach((user) => { %>
+	    <tr>
+	      <td><%- user.firstname %></td>
+	      <td><%- user.lastname %></td>
+	      <td><%- user.email %></td>
+	      <td>
+	        <a href="/<%= user.guest_id%>/update/">update</a>
+	      </td>
+	      <td>
+	        <form action="/<%= user.guest_id%>?_method=DELETE" method="POST">
+	          <input type="submit" value="DELETE">  
+	        </form>
+	      </td>          
+	    </tr>      
+	<% }) %>  
+    </table>
+</body>
+</html>

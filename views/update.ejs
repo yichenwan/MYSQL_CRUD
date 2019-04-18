@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User List</title>
+</head>
+<body>
+<h1>update page</h1>
+      <form action="/<%= user.guest_id%>?_method=PUT" method="POST">
+          <label for="firstname">firstname</label>
+          <input type="text" name="firstname" value="<%- user.firstname%>">
+          <label for="lastname">lastname</label>
+          <input type="text" name="lastname" value="<%- user.lastname%>">
+          <label for="email" >email</label>
+          <input type="text" name="email" value="<%- user.email%>">            
+          <input type="submit" value="Update">  
+      </form>
+      <a href="/">Go back</a>
+</body>
+</html>          
